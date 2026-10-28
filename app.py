@@ -66,7 +66,10 @@ st.set_page_config(page_title="Scam Message Shield", page_icon="🛡️")
 st.title("🛡️ Scam Message Shield")
 st.caption(
     "Paste an SMS or WhatsApp message to check if it looks like a scam. "
-    "This is a help tool, not 100% accurate. Messages are not stored."
+    "This is a help tool, not 100% accurate. "
+    "Messages are not stored by this app. If AI explanations are enabled, "
+    "the message text is sent to the Llama API, so do not paste personal "
+    "or sensitive messages."
 )
 
 examples = {

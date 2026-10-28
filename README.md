@@ -21,14 +21,21 @@ The model trained on the English UCI dataset alone reached only 0.25 scam recall
 | Fresh set | Hybrid | 0.87 | 0.87 | 0.87 |
 
 Original English-only baseline on the UCI hold-out set (1,115 messages): scam precision 0.90, recall 0.93.
+### Tanglish (Tamil written in English letters) results
+I added Tanglish rules (threat words, work-from-home offers, genuine-message warnings such as "do not share"). Hybrid accuracy:
+
+| Test set | Messages | ML only | Rules only | Hybrid |
+|---|---|---|---|---|
+| Tanglish dev set (rules were tuned on its errors) | 30 | 0.90 | 0.93 | 0.97 |
+| Tanglish holdout (not used to tune, same author) | 20 | 0.75 | 0.75 | 0.85 |
+| English fresh set, re-run after rule changes (no longer a clean test) | 30 | 0.80 | 0.83 | 0.90 |
+
+Before the Tanglish rules, hybrid accuracy was 0.87 (Tanglish dev), 0.75 (Tanglish holdout) and 0.87 (English fresh).
 
 ## Limitations
-- All Indian-style training and test messages were written by me, so they may share patterns. The test sets are small (40 and 30 messages), so results are indicative, not definitive.
-- Real-world accuracy has not been measured.
-- Legitimate OTP and bank alert messages can be flagged because they contain words like OTP and account.
-- Some scams are missed, for example fake job offers that ask for a fee.
-- Thresholds were chosen by hand, and the dev-set numbers are optimistic because rules were adjusted after seeing its errors.
-
+- Tanglish is supported only in Roman letters, not Tamil script.
+- Both Tanglish test sets and the rules were written by the same person, so the holdout is not fully independent, and it has only 20 messages.
+- Still missed or wrongly flagged: fake job offers asking for a fee, some earning-offer scams, and genuine Aadhaar update messages.
 ## Future work
 - Collect real, anonymised scam messages and test on them.
 - Better handling of legitimate OTP and bank alerts.
